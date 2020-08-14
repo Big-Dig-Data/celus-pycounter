@@ -34,6 +34,7 @@ def get_sushi_stats_raw(
     report="JR1",
     release=4,
     sushi_dump=False,
+    dump_file=None,
     verify=True,
     **extra_params,
 ):
@@ -61,6 +62,8 @@ def get_sushi_stats_raw(
     :param release: report release number (should generally be `4`.)
 
     :param sushi_dump: produces dump of XML (or JSON, for COUNTER 5) to DEBUG logger
+
+    :param dump_file: dumps downloaded data into a file
 
     :param verify: bool: whether to verify SSL certificates
 
@@ -119,6 +122,9 @@ def get_sushi_stats_raw(
         url=wsdl_url, headers=headers, data=payload, verify=verify, **extra_params
     )
 
+    if dump_file:
+        dump_file.write(response.content)
+
     if sushi_dump:
         logger.debug(
             "SUSHI DUMP: request: %s \n\n response: %s", payload, response.content
@@ -166,7 +172,7 @@ def get_report(*args, **kwargs):
             raw_report = gssr(*args, **kwargs)
             return rtf(raw_report)
         except pycounter.exceptions.ServiceBusyError:
-            print("Service busy, retrying in %d seconds" % delay_amount)
+            logger.info("Service busy, retrying in %d seconds", delay_amount)
             time.sleep(delay_amount)
 
 

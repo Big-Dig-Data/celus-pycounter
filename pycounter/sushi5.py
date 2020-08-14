@@ -172,6 +172,7 @@ def get_sushi_stats_raw(
     report="TR_J1",
     release=5,
     sushi_dump=False,
+    dump_file=None,
     verify=True,
     url=None,
     api_key=None,
@@ -196,6 +197,8 @@ def get_sushi_stats_raw(
     :param release: COUNTER release (only 5 is supported in this module)
 
     :param sushi_dump: produces dump of JSON to DEBUG logger
+
+    :param dump_file: dumps downloaded data into a file
 
     :param verify: bool: whether to verify SSL certificates
 
@@ -233,6 +236,9 @@ def get_sushi_stats_raw(
         headers={"User-Agent": "pycounter/%s" % pycounter.__version__},
         verify=verify,
     )
+
+    if dump_file:
+        dump_file.write(response.content)
 
     if sushi_dump:  # pragma: no cover
         logger.debug(
