@@ -10,6 +10,7 @@ from httmock import HTTMock, urlmatch
 import mock
 import pytest
 
+from pycounter import report
 from pycounter import sushi
 from pycounter import sushiclient
 import pycounter.exceptions
@@ -401,3 +402,37 @@ class TestDumpFile(unittest.TestCase):
 
         fake_file.seek(0)
         self.assertEquals(b"Bogus response with no XML", fake_file.read())
+
+
+class TestRAWJR2(unittest.TestCase):
+    """Test converting simple JR2 SUSHI response"""
+
+    def setUp(self):
+        # xml
+        path = os.path.join(os.path.dirname(__file__), "data", "sushi_jr2.xml")
+        with open(path, "rb") as datafile:
+            self.report_xml = sushi.raw_to_full(datafile.read())
+
+        # csv
+        path = os.path.join(os.path.dirname(__file__), "data", "C4JR2.csv")
+        self.report_csv = report.parse(path, "csv")
+
+    def test_report(self):
+        self.assertEqual(self.report_xml.report_type, "JR2")
+
+    def test_totals_xml(self):
+        # This xml report has two metrics
+        raw = self.report_xml.as_generic()
+
+        assert raw[7][0] != "Total for all journals"
+        assert raw[8][0] == "Total for all journals"
+        assert raw[9][0] == "Total for all journals"
+        assert raw[10][0] != "Total for all journals"
+
+    def test_totals_csv(self):
+        # This csv report has only one metric
+        raw = self.report_csv.as_generic()
+
+        assert raw[7][0] != "Total for all journals"
+        assert raw[8][0] == "Total for all journals"
+        assert raw[9][0] != "Total for all journals"

@@ -2,6 +2,7 @@
 
 import collections
 import datetime
+import itertools
 import logging
 import re
 import warnings
@@ -744,6 +745,8 @@ def parse_generic(report_reader):
             countable_header.append(col)
     last_col = len(countable_header)
 
+    # skip totals
+    total_text = TOTAL_TEXT.get(report.report_type)
     try:
         if report.report_type not in ("DB1", "PR1") and report.report_version != 5:
             # these reports do not have line with totals
@@ -752,6 +755,18 @@ def parse_generic(report_reader):
         if report.report_type in ("DB2", "BR3", "JR3"):
             # this report has two lines of totals
             next(report_reader)
+
+        # based on total text we skip first X records
+        if total_text:
+            # other report types are considered not to have
+            # total records
+            while True:
+                peek = next(report_reader)
+                if peek[0] != total_text:
+                    break
+
+            # return first item to generator
+            report_reader = itertools.chain([peek], report_reader)
     except StopIteration:
         # No record present in the report
         return report
