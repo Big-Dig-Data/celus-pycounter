@@ -4,16 +4,31 @@ from datetime import date
 from pycounter.report import CounterBook, CounterReport
 
 
+def _check_lines(a, b):
+    # some report headers are missing ':' in the end
+    # and some have trailing spaces
+    # and are case insensitive
+    # and some might be wrapped in
+    assert a.lower().strip(' "').rstrip(": ") == b.lower().strip(' "').rstrip(": ")
+
+
 def test_header_content(common_output):
-    assert common_output[0][0:7] == common_output[1][0:7]
+    converted, raw = common_output
+    for i in range(7):
+        assert len(converted[i]) == len(raw[i])
+        for j in range(len(converted[i])):
+            _check_lines(converted[i][j], raw[i][j])
 
 
 def test_table_header(common_output):
-    assert common_output[0][7] == common_output[1][7]
+    converted, raw = common_output
+    assert len(converted[7]) == len(raw[7])
+    for i in range(len(converted[7])):
+        _check_lines(converted[7][i], raw[7][i])
 
 
 def test_totals(common_output):
-    assert common_output[0] == common_output[1]
+    assert common_output[0][8:] == common_output[1][8:]
 
 
 def test_data(common_output):

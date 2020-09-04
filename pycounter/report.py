@@ -129,13 +129,13 @@ class CounterReport:
         in COUNTER report (suitable for writing as CSV, TSV, etc.)
         """
         output_lines = []
-        rep_type = ""
-        for name, code in CODES.items():
-            if code == self.report_type[0:2]:
-                rep_type = name
+        report_type1, report_type2 = self.report_type[:2], self.report_type[2:]
+        rep_type = {v: k for k, v in CODES.items()}.get(report_type1, "")
 
-        report_name = "{} Report {} (R{})".format(
-            rep_type, self.report_type[-1], self.report_version
+        report_name = "%s Report %s (R%s)" % (
+            rep_type,
+            report_type2,
+            self.report_version,
         )
         output_lines.append([report_name, REPORT_DESCRIPTIONS[self.report_type]])
         if self.report_type == "BR2":
@@ -152,7 +152,7 @@ class CounterReport:
         output_lines.append(["Date run:"])
         output_lines.append([self.date_run.strftime("%Y-%m-%d")])
         output_lines.append(self._table_header())
-        if self.report_type in ("JR1", "BR1", "BR2", "DB2", "JR2", "BR3"):
+        if self.report_type in ("JR1", "JR1 GOA", "BR1", "BR2", "DB2", "JR2", "BR3"):
             output_lines.extend(self._totals_lines())
         elif self.report_type.startswith("DB"):
             self._ensure_required_metrics()
@@ -161,7 +161,7 @@ class CounterReport:
             except ValueError:  # pragma: nocover
                 pass
 
-        for pub in sorted(self.pubs, key=lambda x: x.title or ''):
+        for pub in sorted(self.pubs, key=lambda x: x.title or ""):
             output_lines.append(pub.as_generic())
 
         return output_lines
@@ -189,7 +189,7 @@ class CounterReport:
             total_cells.append(platforms.pop())
         else:
             total_cells.append("")
-        if self.report_type in ("JR1", "BR1", "BR2", "JR2", "BR3"):
+        if self.report_type in ("JR1", "JR1 GOA", "BR1", "BR2", "JR2", "BR3"):
             total_cells.extend([""] * 4)
         if self.report_type in ("DB2", "JR2", "BR3"):
             total_cells.append(metric)
@@ -207,14 +207,14 @@ class CounterReport:
         for pub in self.pubs:
             if pub.metric != metric:
                 continue
-            if self.report_type == "JR1":
+            if self.report_type in ("JR1", "JR1 GOA"):
                 pdf_usage += pub.pdf_total  # pytype: disable=attribute-error
                 html_usage += pub.html_total  # pytype: disable=attribute-error
             for data in pub:
                 total_usage += data[2]
                 month_data[months.index(data[0])] += data[2]
         total_cells.append(str(total_usage))
-        if self.report_type == "JR1":
+        if self.report_type in ("JR1", "JR1 GOA"):
             total_cells.append(str(html_usage))
             total_cells.append(str(pdf_usage))
         total_cells.extend(str(d) for d in month_data)
