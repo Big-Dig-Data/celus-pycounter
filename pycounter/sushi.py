@@ -324,7 +324,7 @@ def raw_to_full(raw_report):
                 month_data.append((item_date, int(usage)))
 
         if report.report_type:
-            if report.report_type == "JR1":
+            if report.report_type in ["JR1", "JR1a", "JR1 GOA"]:
                 report.pubs.append(
                     pycounter.report.CounterJournal(
                         title=title,

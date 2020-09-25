@@ -436,3 +436,21 @@ class TestRAWJR2(unittest.TestCase):
         assert raw[7][0] != "Total for all journals"
         assert raw[8][0] == "Total for all journals"
         assert raw[9][0] != "Total for all journals"
+
+
+class TestRAWJR1a(unittest.TestCase):
+    """Test converting simple JR1a SUSHI response"""
+
+    def setUp(self):
+        path = os.path.join(os.path.dirname(__file__), "data", "sushi_jr1a.xml")
+        with open(path, "rb") as datafile:
+            self.report_xml = sushi.raw_to_full(datafile.read())
+
+    def test_report_type(self):
+        self.assertEqual(self.report_xml.report_type, "JR1a")
+
+    def test_data(self):
+        # This xml report has two metrics
+        raw = self.report_xml.as_generic()
+        assert raw[-2] == ['Total for all journals', 'MAGE Publications', 'MAGE Journals', '', '', '', '', '1', '0', '1', '1']
+        assert raw[-1] == ['Some interesting title', 'MAGE Publications', 'MAGE Journals', '11.0022/uroa', 'uroa', '1111-1111', '1111-1111', '1', '0', '1', '1']
