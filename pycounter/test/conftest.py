@@ -203,21 +203,27 @@ def c4db1_sy():
 
 
 @pytest.fixture
-def br3_report():
+def br3_report_csv():
     """Book report 3 (turnaways)."""
     return parsedata("C4BR3.csv")
 
 
 @pytest.fixture
-def br1_report():
+def br1_report_tsv():
     """Book report 1."""
     return parsedata("C4BR1.tsv")
 
 
 @pytest.fixture
-def br2_report():
+def br2_report_tsv():
     """Book report 2."""
     return parsedata("C4BR2.tsv")
+
+
+@pytest.fixture
+def br3_report_tsv():
+    """Book report 3 (turnaways)."""
+    return parsedata("C4BR3.tsv")
 
 
 @pytest.fixture
