@@ -131,6 +131,9 @@ class CounterReport:
         """
         output_lines = []
         report_type1, report_type2 = self.report_type[:2], self.report_type[2:]
+        if report_type2 == '1GOA':
+            # JR1GOA is written together in requests, but with a space in output tables
+            report_type2 = '1 GOA'
         rep_type = {v: k for k, v in CODES.items()}.get(report_type1, "")
 
         report_name = "%s Report %s (R%s)" % (
@@ -153,7 +156,7 @@ class CounterReport:
         output_lines.append(["Date run:"])
         output_lines.append([self.date_run.strftime("%Y-%m-%d")])
         output_lines.append(self._table_header())
-        if self.report_type in ("JR1", "JR1a", "JR1 GOA", "BR1", "BR2", "DB2", "JR2", "BR3"):
+        if self.report_type in ("JR1", "JR1a", "JR1GOA", "BR1", "BR2", "DB2", "JR2", "BR3"):
             output_lines.extend(self._totals_lines())
         elif self.report_type.startswith("DB"):
             self._ensure_required_metrics()
@@ -190,7 +193,7 @@ class CounterReport:
             total_cells.append(platforms.pop())
         else:
             total_cells.append("")
-        if self.report_type in ("JR1", "JR1a", "JR1 GOA", "BR1", "BR2", "JR2", "BR3"):
+        if self.report_type in ("JR1", "JR1a", "JR1GOA", "BR1", "BR2", "JR2", "BR3"):
             total_cells.extend([""] * 4)
         if self.report_type in ("DB2", "JR2", "BR3"):
             total_cells.append(metric)
@@ -208,14 +211,14 @@ class CounterReport:
         for pub in self.pubs:
             if pub.metric != metric:
                 continue
-            if self.report_type in ("JR1", "JR1a", "JR1 GOA"):
+            if self.report_type in ("JR1", "JR1a", "JR1GOA"):
                 pdf_usage += pub.pdf_total  # pytype: disable=attribute-error
                 html_usage += pub.html_total  # pytype: disable=attribute-error
             for data in pub:
                 total_usage += data[2]
                 month_data[months.index(data[0])] += data[2]
         total_cells.append(str(total_usage))
-        if self.report_type in ("JR1", "JR1a", "JR1 GOA"):
+        if self.report_type in ("JR1", "JR1a", "JR1GOA"):
             total_cells.append(str(html_usage))
             total_cells.append(str(pdf_usage))
         total_cells.extend(str(d) for d in month_data)
@@ -894,7 +897,8 @@ def _get_type_and_version(specifier):
         r".*(%s) Report (\d(?: GOA|a)?) ?\(R(\d)\)" % report_types_clause, specifier
     )
     if rt_match:
-        report_type = CODES[rt_match.group(1)] + rt_match.group(2)
+        # remove spaces from the code
+        report_type = CODES[rt_match.group(1)] + rt_match.group(2).replace(" ", "")
         report_version = int(rt_match.group(3))
     else:
         raise UnknownReportTypeError("No match in line: %s" % specifier)

@@ -1,6 +1,10 @@
 """Test COUNTER JR1 journal report (CSV)"""
 
 import datetime
+import os
+import unittest
+
+from pycounter import report
 
 import pytest
 
@@ -84,6 +88,19 @@ def test_big_period(big_multiyear):
     )
 
 
+class ParseJR1(unittest.TestCase):
+    """JR1a Archive Access Report
+    """
+
+    def setUp(self):
+        self.report = report.parse(
+            os.path.join(os.path.dirname(__file__), "data/C4JR1a.csv")
+        )
+
+    def test_metric(self):
+        self.assertEqual(self.report.metric, u"Archive Article Requests")
+
+
 def test_big_monthdata_exception(big_multiyear):
     with pytest.raises(AttributeError):
         # pylint: disable=pointless-statement
@@ -130,3 +147,23 @@ def test_counter4_bad_csv_data(jr1_bad):
     assert [x[2] for x in publication] == [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     publication = jr1_bad.pubs[1]
     assert [x[2] for x in publication] == [2, 1, 0, 0, 0, 5, 1, 1, 0, 5, 1, 1000]
+
+
+class ParseCounter4Bad(unittest.TestCase):
+    """Tests for parsing C4 JR1 with questionable formatting..."""
+
+    def setUp(self):
+        self.report = report.parse(
+            os.path.join(os.path.dirname(__file__), "data/C4JR1_bad.csv")
+        )
+
+    def test_counter4_csv_data(self):
+
+        publication = self.report.pubs[0]
+        self.assertEqual(
+            [x[2] for x in publication], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        )
+        publication = self.report.pubs[1]
+        self.assertEqual(
+            [x[2] for x in publication], [2, 1, 0, 0, 0, 5, 1, 1, 0, 5, 1, 1000]
+        )

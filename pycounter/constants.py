@@ -10,7 +10,7 @@ NS = {
 METRICS = {
     "JR1": "FT Article Requests",
     "JR1a": "Archive Article Requests",
-    "JR1 GOA": "Gold Open Access Article Requests",
+    "JR1GOA": "Gold Open Access Article Requests",
     "BR1": "Book Title Requests",
     "BR2": "Book Section Requests",
     "DB1": [
@@ -60,7 +60,7 @@ REPORT_DESCRIPTIONS = {
     "DB1": "Total Searches, Result Clicks and Record Views by Month and " "Database",
     "DB2": "Access Denied by Month, Database and Category",
     "JR1": "Number of Successful Full-Text Article Requests by Month and " "Journal",
-    "JR1 GOA": "Number of Successful Gold Open Access Full-Text Article "
+    "JR1GOA": "Number of Successful Gold Open Access Full-Text Article "
     "Requests by Month and Journal",
     "JR1a": "Number of Successful Full-Text Article Requests from an "
     "Archive by Month and Journal",
@@ -119,7 +119,7 @@ HEADER_FIELDS = {
         u"Reporting Period HTML",
         u"Reporting Period PDF",
     ),
-    "JR1 GOA": (
+    "JR1GOA": (
         "Journal",
         "Publisher",
         "Platform",
@@ -229,7 +229,7 @@ HEADER_FIELDS = {
 TOTAL_TEXT = {
     "JR1": "Total for all journals",
     "JR1a": "Total for all journals",
-    "JR1 GOA": "Total for all journals",
+    "JR1GOA": "Total for all journals",
     "JR2": "Total for all journals",
     "JR3": "Total for all journals",
     "BR1": "Total for all titles",
