@@ -312,6 +312,8 @@ def raw_to_full(raw_report):
                         pdf_usage += int(inst.Count)
                     elif inst.MetricType == "ft_html":
                         html_usage += int(inst.Count)
+                    elif inst.MetricType == "multimedia":
+                        usage = int(inst.Count)
                     elif report.report_type.startswith("DB") or report.report_type in (
                         "PR1",
                         "JR2",
@@ -418,4 +420,16 @@ def raw_to_full(raw_report):
                             month_data=month_data,
                         )
                     )
+            elif report.report_type == "MR1":
+                report.pubs.append(
+                    pycounter.report.CounterMultimedia(
+                        collection=title,
+                        platform=platform,
+                        content_provider=publisher_name,
+                        period=report.period,
+                        metric=report.metric,
+                        month_data=month_data,
+                    )
+                )
+
     return report

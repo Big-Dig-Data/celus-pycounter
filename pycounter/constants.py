@@ -23,6 +23,7 @@ METRICS = {
         "Access denied: concurrent/simultaneous user license exceeded",
         "Access denied: content item not licensed",
     ],
+    u"MR1": u"Multimedia Full Content Unit Requests"
 }
 
 DB_METRIC_MAP = {
@@ -224,6 +225,12 @@ HEADER_FIELDS = {
         "Access Denied Category",
         "Reporting Period Total",
     ),
+    "MR1": (
+        "Collection",
+        "Content Provider",
+        "Platform",
+        "Reporting Period Total",
+    ),
 }
 
 TOTAL_TEXT = {
@@ -236,4 +243,5 @@ TOTAL_TEXT = {
     "BR2": "Total for all titles",
     "BR3": "Total for all titles",
     "DB2": "Total for all databases",
+    "MR1": "Total for all collections",
 }

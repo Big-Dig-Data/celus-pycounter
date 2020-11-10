@@ -262,6 +262,12 @@ def multiyear():
     return parsedata("C4JR1my.csv")
 
 
+@pytest.fixture
+def mr1_report_tsv():
+    """ Multimedia report 1 """
+    return parsedata("C4MR1.tsv")
+
+
 @pytest.fixture(
     params="""C4BR1.tsv
 C4BR2.tsv
@@ -277,6 +283,7 @@ C4JR1mul.csv
 C4JR1my.csv
 C4JR2.csv
 C4JR2_single_month.csv
+C4MR1.tsv
 PR1.tsv
 simpleJR1.tsv
 """.split()

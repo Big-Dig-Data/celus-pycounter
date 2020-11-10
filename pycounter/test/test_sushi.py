@@ -135,7 +135,9 @@ class TestRawDatabaseWithMissingData(unittest.TestCase):
     """
 
     def setUp(self):
-        path = os.path.join(os.path.dirname(__file__), "data", "sushi_db1_missing_record_view.xml")
+        path = os.path.join(
+            os.path.dirname(__file__), "data", "sushi_db1_missing_record_view.xml"
+        )
         with open(path, "rb") as datafile:
             self.report = sushi.raw_to_full(datafile.read())
         # missing data only injected when making generic to write
@@ -452,5 +454,99 @@ class TestRAWJR1a(unittest.TestCase):
     def test_data(self):
         # This xml report has two metrics
         raw = self.report_xml.as_generic()
-        assert raw[-2] == ['Total for all journals', 'MAGE Publications', 'MAGE Journals', '', '', '', '', '1', '0', '1', '1']
-        assert raw[-1] == ['Some interesting title', 'MAGE Publications', 'MAGE Journals', '11.0022/uroa', 'uroa', '1111-1111', '1111-1111', '1', '0', '1', '1']
+        assert raw[-2] == [
+            "Total for all journals",
+            "MAGE Publications",
+            "MAGE Journals",
+            "",
+            "",
+            "",
+            "",
+            "1",
+            "0",
+            "1",
+            "1",
+        ]
+        assert raw[-1] == [
+            "Some interesting title",
+            "MAGE Publications",
+            "MAGE Journals",
+            "11.0022/uroa",
+            "uroa",
+            "1111-1111",
+            "1111-1111",
+            "1",
+            "0",
+            "1",
+            "1",
+        ]
+
+
+class TestRAWMR1(unittest.TestCase):
+    """Test converting simple MR1 SUSHI response"""
+
+    def setUp(self):
+        path = os.path.join(os.path.dirname(__file__), "data", "sushi_mr1.xml")
+        with open(path, "rb") as datafile:
+            self.report_xml = sushi.raw_to_full(datafile.read())
+
+    def test_report_type(self):
+        self.assertEqual(self.report_xml.report_type, "MR1")
+
+    def test_data(self):
+        # This xml report has two metrics
+        raw = self.report_xml.as_generic()
+        assert raw[-3] == [
+            "Total for all collections",
+            "",
+            "MyPlatform",
+            "15",
+            "0",
+            "3",
+            "0",
+            "1",
+            "10",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "1",
+        ]
+        assert raw[-2] == [
+            "ItemName1",
+            "MyPublisher",
+            "MyPlatform",
+            "11",
+            "0",
+            "0",
+            "0",
+            "1",
+            "10",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+        ]
+        assert raw[-1] == [
+            "ItemName2",
+            "MyPublisher",
+            "MyPlatform",
+            "4",
+            "0",
+            "3",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "1",
+        ]
