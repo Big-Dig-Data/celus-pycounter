@@ -622,9 +622,9 @@ class CounterMultimedia(CounterEresource):
 
         for data in self:
             total_usage += data[2]
-            month_data.append(six.text_type(data[2]))
+            month_data.append(str(data[2]))
 
-        data_line.append(six.text_type(total_usage))
+        data_line.append(str(total_usage))
         data_line.extend(month_data)
 
         return data_line
