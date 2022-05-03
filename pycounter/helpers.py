@@ -60,7 +60,12 @@ def convert_date_column(datestring):
 
     :return: datetime.date
     """
-    return datetime.datetime.strptime(datestring.strip(), "%b-%Y").date()
+    if isinstance(datestring, datetime.datetime):
+        return datestring.date()
+    try:
+        return datetime.datetime.strptime(datestring.strip(), "%b-%Y").date()
+    except ValueError:
+        return datetime.datetime.strptime(datestring.strip(), "%b-%y").date()
 
 
 def is_first_last(period):
