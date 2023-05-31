@@ -243,11 +243,17 @@ def raw_to_full(raw_report):
     report_data["institutional_identifier"] = inst_id
 
     rep_root = root.find(".//%s" % ns("counter", "Report"))
+
+    # Set date run based on current time
+    # and override it if `Created` attribute is
+    # extracted from xml and properly parsed
+    report_data["date_run"] = datetime.datetime.now()
     created_string = rep_root.get("Created")
     if created_string is not None:
-        report_data["date_run"] = pendulum.parse(created_string)
-    else:
-        report_data["date_run"] = datetime.datetime.now()
+        try:
+            report_data["date_run"] = pendulum.parse(created_string)
+        except Exception:
+            pass
 
     report = pycounter.report.CounterReport(**report_data)
 
