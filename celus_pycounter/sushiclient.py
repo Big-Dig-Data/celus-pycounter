@@ -14,14 +14,11 @@ from celus_pycounter.helpers import convert_date_run, last_day, prev_month
 @click.argument("url")
 @click.option("--report", "-r", default="JR1", help="report name (default JR1)")
 @click.option("--release", "-l", default=4, help="COUNTER release (default 4)")
-@click.option(
-    "--start_date", "-s", help="Start Date YYYY-MM-DD (default first day of last month)"
-)
+@click.option("--start_date", "-s", help="Start Date YYYY-MM-DD (default first day of last month)")
 @click.option(
     "--end_date",
     "-e",
-    help="End Date YYYY-MM-DD (default last day of last month OR "
-    "last day of start month",
+    help="End Date YYYY-MM-DD (default last day of last month OR " "last day of start month",
 )
 @click.option("--requestor_id", "-i", help="Requestor ID")
 @click.option("--requestor_email", help="Email address of requestor")

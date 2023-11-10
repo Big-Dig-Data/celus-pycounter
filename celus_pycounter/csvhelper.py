@@ -23,12 +23,7 @@ class UnicodeReader:
     """
 
     def __init__(
-        self,
-        filename,
-        dialect=csv.excel,
-        encoding="utf-8",
-        fallback_encoding="latin-1",
-        **kwargs
+        self, filename, dialect=csv.excel, encoding="utf-8", fallback_encoding="latin-1", **kwargs
     ):
         self.filename = filename
         self.dialect = dialect
@@ -47,9 +42,7 @@ class UnicodeReader:
                 "Decoding with '%s' codec failed; falling "
                 "back to '%s'" % (self.encoding, self.fallback_encoding)
             )
-            self.fileobj = open(
-                self.filename, "rt", encoding=self.fallback_encoding, newline=""
-            )
+            self.fileobj = open(self.filename, "rt", encoding=self.fallback_encoding, newline="")
             self.encoding = self.fallback_encoding
         finally:
             self.fileobj.seek(0)
@@ -83,12 +76,7 @@ class UnicodeWriter:
     """
 
     def __init__(
-        self,
-        filename,
-        dialect=csv.excel,
-        encoding="utf-8",
-        lineterminator="\n",
-        **kwargs
+        self, filename, dialect=csv.excel, encoding="utf-8", lineterminator="\n", **kwargs
     ):
         self.filename = filename
         self.dialect = dialect
@@ -101,10 +89,7 @@ class UnicodeWriter:
     def __enter__(self):
         self.fileobj = open(self.filename, "wt", encoding=self.encoding, newline="")
         self.writer = csv.writer(
-            self.fileobj,
-            dialect=self.dialect,
-            lineterminator=self.lineterminator,
-            **self.kwargs
+            self.fileobj, dialect=self.dialect, lineterminator=self.lineterminator, **self.kwargs
         )
         return self
 

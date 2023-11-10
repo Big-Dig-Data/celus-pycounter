@@ -23,7 +23,7 @@ METRICS = {
         "Access denied: concurrent/simultaneous user license exceeded",
         "Access denied: content item not licensed",
     ],
-    "MR1": u"Multimedia Full Content Unit Requests"
+    "MR1": u"Multimedia Full Content Unit Requests",
 }
 
 DB_METRIC_MAP = {
@@ -53,11 +53,9 @@ REPORT_DESCRIPTIONS = {
     "BR3": "Access Denied to Content Items by Month, Title, and Category",
     "BR4": "Access Denied to Content Items by Month, Platform, and Category",
     "BR5": "Total Searches by Month and Title",
-    "CR1": "Number of Successful Full-text Journal Article or Book Chapter "
-    "Requests by Month",
+    "CR1": "Number of Successful Full-text Journal Article or Book Chapter " "Requests by Month",
     "CR2": "Total Searches by Month and Database",
-    "CR3": "Number of Successful Multimedia Full Content Unit Requests "
-    "by Month and Collection",
+    "CR3": "Number of Successful Multimedia Full Content Unit Requests " "by Month and Collection",
     "DB1": "Total Searches, Result Clicks and Record Views by Month and " "Database",
     "DB2": "Access Denied by Month, Database and Category",
     "JR1": "Number of Successful Full-Text Article Requests by Month and " "Journal",
@@ -66,15 +64,13 @@ REPORT_DESCRIPTIONS = {
     "JR1a": "Number of Successful Full-Text Article Requests from an "
     "Archive by Month and Journal",
     "JR2": "Access Denied to Full Text Articles by Month, Journal, and " "Category",
-    "JR3": "Number of Successful Item Requests and Turnaways by Month, "
-    "Journal, and Page-Type",
+    "JR3": "Number of Successful Item Requests and Turnaways by Month, " "Journal, and Page-Type",
     "JR3mobile": "Number of Successful Item Requests by Month, Journal, "
     "and Page-Type for usage on a mobile device",
     "JR4": "Total Searches Run by Month and Collection",
     "JR5": "Number of Successful Full-Text Article Requests by "
     "Year-of-Publication (YOP) and Journal",
-    "MR1": "Number of Successful Multimedia Full Content Unit Requests "
-    "by Month and Collection",
+    "MR1": "Number of Successful Multimedia Full Content Unit Requests " "by Month and Collection",
     "MR2": "Number of Successful Multimedia Full Content Unit Requests by "
     "Month, Collection, and Item Type",
     "PR1": "Total Searches, Result Clicks, and Record Views by Month and " "Platform",

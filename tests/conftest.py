@@ -171,9 +171,7 @@ def all_book_reports(request):
 def report_file_output(request):
     """Reports with their expected output."""
     rpt = parsedata(request.param)
-    with open(
-        os.path.join(os.path.dirname(__file__), "data", request.param), "rb"
-    ) as f:
+    with open(os.path.join(os.path.dirname(__file__), "data", request.param), "rb") as f:
         expected_data = f.read()
     return rpt, expected_data
 
@@ -264,7 +262,7 @@ def multiyear():
 
 @pytest.fixture
 def mr1_report_tsv():
-    """ Multimedia report 1 """
+    """Multimedia report 1"""
     return parsedata("C4MR1.tsv")
 
 

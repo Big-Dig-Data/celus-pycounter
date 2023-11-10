@@ -23,9 +23,7 @@ def test_pr1_row_metric(pr1_report):
 
 
 def test_output(tmp_path):
-    report = celus_pycounter.report.parse(
-        os.path.join(os.path.dirname(__file__), "data/PR1.tsv")
-    )
+    report = celus_pycounter.report.parse(os.path.join(os.path.dirname(__file__), "data/PR1.tsv"))
     report.write_tsv(str(tmp_path / "outputfile.tsv"))
     with open(str(tmp_path / "outputfile.tsv"), "rb") as new_file:
         new_content = new_file.read()

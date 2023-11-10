@@ -49,9 +49,7 @@ def not_authorized(url_unused, request_unused):
 def test_error_not_authorized():
     with pytest.raises(celus_pycounter.exceptions.Sushi5Error) as exception:
         with HTTMock(not_authorized):
-            celus_pycounter.sushi5.get_sushi_stats_raw(
-                url="https://example.com/sushi", release=5
-            )
+            celus_pycounter.sushi5.get_sushi_stats_raw(url="https://example.com/sushi", release=5)
     exc = exception.value
     assert exc.message == "Requestor Not Authorized to Access Service"
     assert exc.severity == "Error"

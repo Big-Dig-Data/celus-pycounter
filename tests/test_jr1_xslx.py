@@ -13,8 +13,7 @@ def test_report_version(jr1_report_xlsx):
 
 def test_publisher(jr1_report_xlsx):
     assert all(  # pragma: no branch
-        publication.publisher == "American Medical Association"
-        for publication in jr1_report_xlsx
+        publication.publisher == "American Medical Association" for publication in jr1_report_xlsx
     )
 
 

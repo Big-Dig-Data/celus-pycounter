@@ -6,10 +6,7 @@ import celus_pycounter
 
 
 class TestDateParsing:
-
-    @pytest.mark.parametrize(['infile'], [
-        ('BR1-missing-months.csv',), ('BR1-ok-months.csv',)
-    ])
+    @pytest.mark.parametrize(['infile'], [('BR1-missing-months.csv',), ('BR1-ok-months.csv',)])
     def test_with_header_before(self, infile):
         """
         Test that when the C4 header refers to months that are not present in the data,
@@ -26,6 +23,3 @@ class TestDateParsing:
         for journal in report:
             months = {str(start) for start, metric, value in journal}
             assert months == {f'2021-{m:02d}-01' for m in range(1, 13)}
-
-
-
