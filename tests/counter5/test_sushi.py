@@ -2,8 +2,8 @@
 
 import os
 
-from httmock import all_requests, HTTMock
 import pytest
+from httmock import HTTMock, all_requests
 
 import celus_pycounter.exceptions
 import celus_pycounter.sushi5

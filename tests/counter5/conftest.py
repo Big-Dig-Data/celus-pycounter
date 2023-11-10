@@ -2,8 +2,8 @@
 import datetime
 import os
 
-from httmock import HTTMock, urlmatch
 import pytest
+from httmock import HTTMock, urlmatch
 
 import celus_pycounter
 

@@ -3,9 +3,8 @@ import os
 
 import pytest
 
-from celus_pycounter import csvhelper
-from celus_pycounter import report
 import celus_pycounter.sushi
+from celus_pycounter import csvhelper, report
 
 
 def parsedata(filename):

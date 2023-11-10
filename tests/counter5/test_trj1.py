@@ -1,6 +1,6 @@
 """Tests of title report for journals."""
-from datetime import date
 import os
+from datetime import date
 
 import celus_pycounter.report
 

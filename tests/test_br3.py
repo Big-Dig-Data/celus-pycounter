@@ -22,15 +22,15 @@ def test_data_csv(br3_report_csv):
     )
 
 
-def test_metric_csv(br3_report_tsv):
+def test_metric_tsv(br3_report_tsv):
     assert br3_report_tsv.metric is None  # Multiple metrics per report
 
 
-def test_type_csv(br3_report_tsv):
+def test_type_tsv(br3_report_tsv):
     assert br3_report_tsv.report_type == u"BR3"
 
 
-def test_data_csv(br3_report_tsv):
+def test_data_tsv(br3_report_tsv):
     i = iter(br3_report_tsv)
     row = next(i)
     item = next(iter(row))

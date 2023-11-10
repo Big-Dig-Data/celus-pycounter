@@ -4,9 +4,9 @@ import datetime
 import os
 import unittest
 
-from celus_pycounter import report
-
 import pytest
+
+from celus_pycounter import report
 
 
 @pytest.mark.parametrize(
