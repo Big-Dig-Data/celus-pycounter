@@ -1,5 +1,10 @@
 # Changelog
 
+## 4.0.0 (2023-11-10)
+
+* Forked from original project
+* Use poetry for dependency management
+
 ## 3.0.0 (unreleased)
 
 * COUNTER 3 support removed (was at EOL in 2014).
@@ -89,7 +94,7 @@ January 2014)
 
 * Exclude builds for flake8/lint/manifest? [Geoffrey Spear]
   Issue #63
-  
+
 * Only use pylint version 1. [Geoffrey Spear]
 
   (version 2 drops py2 support)
@@ -139,10 +144,10 @@ January 2014)
 
 ### CounterBook
 
-* CounterBook.isbn is now a property; it will evaluate to the generic ISBN 
-given in a tabular report (or the constructor, manually), if any, or to an 
-Online_ISBN or Print_ISBN given in an XML report, if they exist, in that 
-order. CounterBook.online_isbn and CounterBook_print_isbn added. [Geoffrey 
+* CounterBook.isbn is now a property; it will evaluate to the generic ISBN
+given in a tabular report (or the constructor, manually), if any, or to an
+Online_ISBN or Print_ISBN given in an XML report, if they exist, in that
+order. CounterBook.online_isbn and CounterBook_print_isbn added. [Geoffrey
 Spear]
 
 ## 0.15.3
@@ -1026,5 +1031,3 @@ Spear]
 * Package structure. [Geoffrey Spear]
 
 * Setup.py, gitignore. [Geoffrey Spear]
-
-
