@@ -1,0 +1,67 @@
+[build-system]
+requires = ["poetry>=1.7.0"]
+build-backend = "poetry.masonry.api"
+
+[tool.black]
+line-length = 100
+skip-string-normalization = true
+target-version = ["py38"]
+
+[tool.ruff]
+line-length = 100
+select = [
+	# Pyflakes
+	"F",
+	# pycodestyle
+	"E",
+	# isort
+	"I",
+]
+src = ["celus_pycounter", "tests"]
+
+[tool.ruff.isort]
+known-first-party = ["celus_pycounter"]
+
+
+[tool.pytest.ini_options]
+testpaths = "tests/"
+
+[tool.poetry]
+name = "celus-pycounter"
+version = "0.1.0"
+description = "Project COUNTER/NISO SUSHI statistics"
+authors = ["Geoffrey Spear <speargh@pitt.edu>", "Beda Kosata <beda@bigdigdata.com>", "Stepan Henek <stepan@bigdigdata.com>"]
+license = "MIT"
+classifiers = [
+	"Topic :: Software Development :: Libraries",
+	"License :: OSI Approved :: MIT License",
+	"Intended Audience :: Developers",
+	"Programming Language :: Python :: 3",
+	"Programming Language :: Python :: 3.8",
+	"Programming Language :: Python :: 3.9",
+]
+keywords = ["COUNTER", "SUSHI"]
+documentation = "https://github.com/Big-Dig-Data/celus-pycounter/blob/master/README.rst"
+
+[tool.poetry.scripts]
+sushiclient = 'celus_pycounter.sushiclient:main'
+
+[tool.poetry.dependencies]
+python = "^3.8"
+
+click = "8.1.7"
+lxml = "4.9.3"
+openpyxl = "~3.1.2"
+pendulum = "2.0.3"
+requests = "~2.31.0"
+
+[tool.poetry.dev-dependencies]
+black = "23.7.0"
+build = "~1.0.3"
+httmock = "~1.4.0"
+mock = "~5.1.0"
+mypy = "^1.6"
+pre-commit = "~3.5.0"
+pytest = "~7.4.3"
+pytest-cov = "~4.1.0"
+ruff = "~0.1.3"

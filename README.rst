@@ -1,31 +1,7 @@
-pycounter
-=========
+celus-pycounter
+===============
 
-.. image:: https://travis-ci.org/pitthsls/pycounter.svg?branch=master
-    :target: https://travis-ci.org/pitthsls/pycounter
-    
-.. image:: https://ci.appveyor.com/api/projects/status/lochuaf25fa9inru/branch/master?svg=true
-    :target: https://ci.appveyor.com/project/Wooble/pycounter/branch/master
-
-.. image:: https://coveralls.io/repos/pitthsls/pycounter/badge.svg?branch=master
-    :target: https://coveralls.io/r/pitthsls/pycounter?branch=master
-
-.. image:: https://img.shields.io/pypi/v/pycounter.svg
-    :target: https://pypi.org/project/pycounter/
-    :alt: Latest Version
-
-.. image:: https://readthedocs.org/projects/pycounter/badge/?version=stable
-    :target: https://readthedocs.org/projects/pycounter/?badge=stable
-    :alt: Documentation Status
-
-.. image:: https://img.shields.io/badge/code%20style-black-000000.svg
-    :target: https://github.com/ambv/black
-
-.. image:: https://dev.azure.com/SPEARGH/SPEARGH/_apis/build/status/pitthsls.pycounter?branchName=master
-    :target: https://dev.azure.com/SPEARGH/SPEARGH/_build/latest?definitionId=1&branchName=master
-
-
-pycounter makes working with `COUNTER <http://www.projectcounter.org/>`_
+celus-pycounter makes working with `COUNTER <http://www.projectcounter.org/>`_
 usage statistics in Python easy, including fetching statistics with NISO
 `SUSHI <http://www.niso.org/workrooms/sushi>`_.
 
@@ -36,21 +12,17 @@ Developed by the `Health Sciences Library System <http://www.hsls.pitt.edu>`_
 of the `University of Pittsburgh <http://www.pitt.edu>`_  to support importing
 usage data into our in-house Electronic Resources Management (ERM) system.
 
+Forked by `Big Dig Data s.r.o. <https://www.bigdigdata.com/>`
+
 Licensed under the `MIT <https://choosealicense.com/licenses/mit/>`_ license.
 See the file LICENSE for details.
-
-pycounter is tested on Python 3.6, 3.7, 3.8, 3.9 and pypy3
-
-
-Documentation is on `Read the Docs <http://pycounter.readthedocs.io>`_ and
-the code can be found on `GitHub <https://github.com/pitthsls/pycounter>`_.
 
 
 Installing
 ----------
-From `pypi <https://pypi.org/project/pycounter/>`_:
+From `pypi <https://pypi.org/project/celus-pycounter/>`_:
 
-    pip install pycounter
+    pip install celus-pycounter
 
 From inside the source distribution:
 
@@ -79,8 +51,8 @@ Usage
 Parsing COUNTER reports (currently supports 4 in .csv, .tsv,
 or .xlsx files, reports JR1, JR2, DB1, DB2, BR1, BR2, and BR3) and COUNTER 5::
 
-    >>> import pycounter.report
-    >>> report = pycounter.report.parse("COUNTER4_2015.tsv")  # filename or path to file
+    >>> import celus_pycounter.report
+    >>> report = celus_pycounter.report.parse("COUNTER4_2015.tsv")  # filename or path to file
     >>> print(report.metric)
     FT Article Requests
     >>> for journal in report:
@@ -95,9 +67,9 @@ or .xlsx files, reports JR1, JR2, DB1, DB2, BR1, BR2, and BR3) and COUNTER 5::
     
 Fetching SUSHI data::
 
-    >>> import pycounter.sushi
+    >>> import celus_pycounter.sushi
     >>> import datetime
-    >>> report = pycounter.sushi.get_report(wsdl_url='http://www.example.com/SushiService',
+    >>> report = celus_pycounter.sushi.get_report(wsdl_url='http://www.example.com/SushiService',
     ...     start_date=datetime.date(2015,1,1), end_date=datetime.date(2015,1,31),
     ...     requestor_id="myreqid", customer_reference="refnum", report="JR1",
     ...     release=4)
