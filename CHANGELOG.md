@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.0.1 (2023-11-13)
+
+* Fix proprietary_id for BR1 and BR2
+
 ## 4.0.0 (2023-11-10)
 
 * Forked from original project

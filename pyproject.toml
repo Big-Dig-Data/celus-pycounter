@@ -28,7 +28,7 @@ testpaths = "tests/"
 
 [tool.poetry]
 name = "celus-pycounter"
-version = "4.0.0"
+version = "4.0.1"
 description = "Project COUNTER/NISO SUSHI statistics"
 authors = ["Geoffrey Spear <speargh@pitt.edu>", "Beda Kosata <beda@bigdigdata.com>", "Stepan Henek <stepan@bigdigdata.com>"]
 license = "MIT"
