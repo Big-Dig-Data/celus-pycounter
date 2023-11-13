@@ -20,3 +20,8 @@ def test_data(jr2_report):
         "Access denied: concurrent/simultaneous user license limit exceeded",
         3,
     )
+
+
+def test_proprietary_id(jr2_report):
+    publication = jr2_report.pubs[0]
+    assert publication.proprietary_id == "9999:1111"

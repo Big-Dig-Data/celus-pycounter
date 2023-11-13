@@ -13,3 +13,8 @@ def test_metric(br1_report_tsv):
 def test_isbn(br1_report_tsv):
     publication = br1_report_tsv.pubs[0]
     assert publication.isbn == "9787490833809"
+
+
+def test_proprietary_id(br1_report_tsv):
+    publication = br1_report_tsv.pubs[0]
+    assert publication.proprietary_id == "1111:5555"

@@ -869,6 +869,7 @@ def _parse_line(line, report, last_col):
             metric = old_line[9]
 
     elif report.report_type in ("BR1", "BR2"):
+        prop_id = line[4]
         line = line[0:3] + line[5:7] + line[8:last_col]
         isbn = line[3].strip()
         issn = line[4].strip()

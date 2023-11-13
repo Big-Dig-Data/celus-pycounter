@@ -14,3 +14,8 @@ def test_months(tsv_jr1):
     for pub in tsv_jr1.pubs:
         month = next(iter(pub))[0]
         assert month == datetime.date(2013, 1, 1)
+
+
+def test_proprietary_id(tsv_jr1):
+    publication = tsv_jr1.pubs[0]
+    assert publication.proprietary_id == "annals"

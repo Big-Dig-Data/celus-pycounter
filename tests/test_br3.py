@@ -39,3 +39,8 @@ def test_data_tsv(br3_report_tsv):
         u"Access denied: content item not licensed",
         1,
     )
+
+
+def test_proprietary_id_tsv(br3_report_tsv):
+    publication = br3_report_tsv.pubs[0]
+    assert publication.proprietary_id == "9999999999999"
