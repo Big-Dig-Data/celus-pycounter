@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.1.0 (2025-04-11)
+
+* Dependencies updated
+
 ## 4.0.1 (2023-11-13)
 
 * Fix proprietary_id for BR1 and BR2
