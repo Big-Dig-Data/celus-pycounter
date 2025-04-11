@@ -1,4 +1,5 @@
 """Tests for BR1 and BR2 (COUNTER3/4) reports."""
+
 import datetime
 
 

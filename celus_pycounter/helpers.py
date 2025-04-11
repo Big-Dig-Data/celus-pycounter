@@ -1,4 +1,5 @@
 """Helper functions used by pycounter."""
+
 import calendar
 import datetime
 import re

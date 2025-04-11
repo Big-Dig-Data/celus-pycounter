@@ -23,7 +23,7 @@ METRICS = {
         "Access denied: concurrent/simultaneous user license exceeded",
         "Access denied: content item not licensed",
     ],
-    "MR1": u"Multimedia Full Content Unit Requests",
+    "MR1": "Multimedia Full Content Unit Requests",
 }
 
 DB_METRIC_MAP = {

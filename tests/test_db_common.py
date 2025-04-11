@@ -1,4 +1,5 @@
 """Common DB report tests."""
+
 import datetime
 
 from celus_pycounter.constants import METRICS

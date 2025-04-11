@@ -1,4 +1,5 @@
 """Test COUNTER JR1 journal report (TSV)"""
+
 import datetime
 
 

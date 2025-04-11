@@ -6,7 +6,7 @@ def test_metric_tsv(mr1_report_tsv):
 
 
 def test_type_tsv(mr1_report_tsv):
-    assert mr1_report_tsv.report_type == u"MR1"
+    assert mr1_report_tsv.report_type == "MR1"
 
 
 def test_data_tsv(mr1_report_tsv):

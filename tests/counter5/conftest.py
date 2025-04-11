@@ -1,4 +1,5 @@
 """Pytest fixtures for COUNTER 5 test suite."""
+
 import datetime
 import os
 

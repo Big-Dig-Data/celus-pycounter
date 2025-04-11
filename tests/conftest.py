@@ -1,4 +1,5 @@
 """Pytest fixtures for main test suite."""
+
 import os
 
 import pytest

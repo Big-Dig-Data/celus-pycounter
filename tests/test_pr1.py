@@ -1,4 +1,5 @@
 """Test COUNTER DB1 database report"""
+
 import os
 
 import celus_pycounter.report

@@ -1,4 +1,5 @@
 """Tests of title report for journals."""
+
 import os
 from datetime import date
 

@@ -1,4 +1,5 @@
 """Check data in common output formats."""
+
 from datetime import date
 
 from celus_pycounter.report import CounterBook, CounterReport

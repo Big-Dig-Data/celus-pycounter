@@ -27,7 +27,7 @@ def test_metric_tsv(br3_report_tsv):
 
 
 def test_type_tsv(br3_report_tsv):
-    assert br3_report_tsv.report_type == u"BR3"
+    assert br3_report_tsv.report_type == "BR3"
 
 
 def test_data_tsv(br3_report_tsv):
@@ -36,7 +36,7 @@ def test_data_tsv(br3_report_tsv):
     item = next(iter(row))
     assert item == (
         datetime.date(2019, 12, 1),
-        u"Access denied: content item not licensed",
+        "Access denied: content item not licensed",
         1,
     )
 

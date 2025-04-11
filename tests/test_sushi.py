@@ -1,4 +1,5 @@
 """Tests for celus_pycounter.sushi"""
+
 import datetime
 import io
 import logging
@@ -143,13 +144,13 @@ class TestRawDatabaseWithMissingData(unittest.TestCase):
     def test_january(self):
         database = self.databases[1]
         data = [month[2] for month in database]
-        self.assertEqual(database.metric, u"Searches-federated and automated")
+        self.assertEqual(database.metric, "Searches-federated and automated")
         self.assertEqual(data[0], 0)
 
     def test_record_view(self):
         database = self.databases[3]
         data = [month[2] for month in database]
-        self.assertEqual(database.metric, u"Record Views")
+        self.assertEqual(database.metric, "Record Views")
         self.assertEqual(data[0], 0)
 
 
@@ -365,7 +366,7 @@ class TestDumpFile(unittest.TestCase):
         fake_file.seek(0)
         path = os.path.join(os.path.dirname(__file__), "data", "sushi_simple.xml")
         with open(path, "rb") as datafile:
-            self.assertEquals(datafile.read(), fake_file.read())
+            self.assertEqual(datafile.read(), fake_file.read())
 
     def test_counter_error(self):
         fake_file = io.BytesIO()
@@ -383,7 +384,7 @@ class TestDumpFile(unittest.TestCase):
         fake_file.seek(0)
         path = os.path.join(os.path.dirname(__file__), "data", "sushi_error.xml")
         with open(path, "rb") as datafile:
-            self.assertEquals(datafile.read(), fake_file.read())
+            self.assertEqual(datafile.read(), fake_file.read())
 
     def test_counter_bogus(self):
         fake_file = io.BytesIO()
@@ -399,7 +400,7 @@ class TestDumpFile(unittest.TestCase):
             )
 
         fake_file.seek(0)
-        self.assertEquals(b"Bogus response with no XML", fake_file.read())
+        self.assertEqual(b"Bogus response with no XML", fake_file.read())
 
 
 class TestRAWJR2(unittest.TestCase):

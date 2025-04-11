@@ -131,9 +131,9 @@ class CounterReport:
         """
         output_lines = []
         report_type1, report_type2 = self.report_type[:2], self.report_type[2:]
-        if report_type2 == '1GOA':
+        if report_type2 == "1GOA":
             # JR1GOA is written together in requests, but with a space in output tables
-            report_type2 = '1 GOA'
+            report_type2 = "1 GOA"
         rep_type = {v: k for k, v in CODES.items()}.get(report_type1, "")
 
         report_name = "%s Report %s (R%s)" % (
@@ -202,7 +202,7 @@ class CounterReport:
         html_usage = 0
 
         start_month_first_day = datetime.date(self.period[0].year, self.period[0].month, 1)
-        months = list(pendulum.Period(start_month_first_day, self.period[1]).range("months"))
+        months = list(pendulum.Interval(start_month_first_day, self.period[1]).range("months"))
         month_data = [0] * len(months)
         for pub in self.pubs:
             if pub.metric != metric:
@@ -224,7 +224,7 @@ class CounterReport:
         """Generate header for COUNTER table for report, as list of cells."""
         header_cells = list(HEADER_FIELDS[self.report_type])
         start_month_first_day = datetime.date(self.period[0].year, self.period[0].month, 1)
-        for d_obj in pendulum.Period(start_month_first_day, self.period[1]).range("months"):
+        for d_obj in pendulum.Interval(start_month_first_day, self.period[1]).range("months"):
             header_cells.append(d_obj.strftime("%b-%Y"))
         return header_cells
 
@@ -316,7 +316,7 @@ class CounterEresource:
         start_month_first_day = datetime.date(self.period[0].year, self.period[0].month, 1)
         start, end = start_month_first_day, self.period[1]
         try:
-            for d_obj in pendulum.Period(start, end).range("months"):
+            for d_obj in pendulum.Interval(start, end).range("months"):
                 if d_obj not in (x[0] for x in self._full_data):
                     self._full_data.append((d_obj, 0))
         except IndexError:  # pragma: nocover

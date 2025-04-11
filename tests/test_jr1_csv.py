@@ -95,7 +95,7 @@ class ParseJR1(unittest.TestCase):
         self.report = report.parse(os.path.join(os.path.dirname(__file__), "data/C4JR1a.csv"))
 
     def test_metric(self):
-        self.assertEqual(self.report.metric, u"Archive Article Requests")
+        self.assertEqual(self.report.metric, "Archive Article Requests")
 
 
 def test_big_monthdata_exception(big_multiyear):
@@ -207,7 +207,7 @@ class ParseGOA(unittest.TestCase):
         self.report = report.parse(os.path.join(os.path.dirname(__file__), "data/C4JR1GOA.csv"))
 
     def test_metric(self):
-        self.assertEqual(self.report.metric, u"Gold Open Access Article Requests")
+        self.assertEqual(self.report.metric, "Gold Open Access Article Requests")
 
 
 class ParseCounter4Bad(unittest.TestCase):
