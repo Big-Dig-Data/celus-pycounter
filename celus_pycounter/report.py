@@ -81,7 +81,7 @@ class CounterReport:
         self.institutional_identifier = institutional_identifier
         if not is_first_last(period):
             warnings.warn(
-                "report period should be from" "first day of a month to last day of a month.",
+                "report period should be from first day of a month to last day of a month.",
                 PycounterWarning,
             )
         self.period = period

@@ -18,7 +18,7 @@ from celus_pycounter.helpers import convert_date_run, last_day, prev_month
 @click.option(
     "--end_date",
     "-e",
-    help="End Date YYYY-MM-DD (default last day of last month OR " "last day of start month",
+    help="End Date YYYY-MM-DD (default last day of last month OR last day of start month",
 )
 @click.option("--requestor_id", "-i", help="Requestor ID")
 @click.option("--requestor_email", help="Email address of requestor")

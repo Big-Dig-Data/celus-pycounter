@@ -13,4 +13,4 @@ def test_c4db2_stats(c4db2):
 def test_c4db2_row_metric(c4db2):
     publication = c4db2.pubs[0]
     jan_data = next(iter(publication))
-    assert jan_data[1] == "Access denied: concurrent/" "simultaneous user license " "limit exceeded"
+    assert jan_data[1] == "Access denied: concurrent/simultaneous user license limit exceeded"

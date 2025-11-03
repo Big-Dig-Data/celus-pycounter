@@ -211,7 +211,7 @@ def get_sushi_stats_raw(
     if url is None and wsdl_url:  # pragma: no cover
         warnings.warn(
             DeprecationWarning(
-                "wsdl_url argument to get_sushi_stats" "_raw is deprecated; use url instead"
+                "wsdl_url argument to get_sushi_stats_raw is deprecated; use url instead"
             )
         )
         url = wsdl_url
