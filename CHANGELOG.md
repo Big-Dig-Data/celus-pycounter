@@ -1,5 +1,9 @@
 # Changelog
 
+## 5.0.0 (2025-11-04)
+
+* Drop support for older version of python and use python 3.12
+
 ## 4.1.0 (2025-04-11)
 
 * Dependencies updated
