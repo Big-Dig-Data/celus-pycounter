@@ -1,6 +1,54 @@
+[project]
+name = "celus-pycounter"
+version = "5.0.1"
+description = "Project COUNTER/NISO SUSHI statistics"
+authors = [
+    { name = "Geoffrey Spear", email = "speargh@pitt.edu" },
+    { name = "Beda Kosata", email = "beda@bigdigdata.com" },
+    { name = "Stepan Henek", email = "stepan@bigdigdata.com" },
+]
+requires-python = ">=3.12,<4"
+license = "MIT"
+keywords = [
+    "COUNTER",
+    "SUSHI",
+]
+classifiers = [
+    "Topic :: Software Development :: Libraries",
+    "License :: OSI Approved :: MIT License",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+]
+dependencies = [
+    "click~=8.4.1",
+    "lxml~=6.1.1",
+    "openpyxl~=3.1.2",
+    "pendulum~=3.2.0",
+    "requests~=2.34.2",
+]
+
+[project.urls]
+Documentation = "https://github.com/Big-Dig-Data/celus-pycounter/blob/master/README.rst"
+
+[project.scripts]
+sushiclient = "celus_pycounter.sushiclient:main"
+
 [build-system]
-requires = ["poetry>=1.7.0"]
-build-backend = "poetry.masonry.api"
+requires = ["uv_build>=0.9.26,<0.12.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "build~=1.5.0",
+    "httmock~=1.4.0",
+    "mock~=5.2.0",
+    "mypy>=2.1.0,<3",
+    "pre-commit~=4.6.0",
+    "pytest~=9.0.3",
+    "pytest-cov~=7.1.0",
+    "ruff~=0.15.16",
+]
 
 [tool.ruff]
 line-length = 100
@@ -22,45 +70,3 @@ known-first-party = ["celus_pycounter"]
 
 [tool.pytest.ini_options]
 testpaths = "tests/"
-
-[tool.poetry]
-name = "celus-pycounter"
-version = "5.0.1"
-description = "Project COUNTER/NISO SUSHI statistics"
-authors = [
-	"Geoffrey Spear <speargh@pitt.edu>",
-	"Beda Kosata <beda@bigdigdata.com>",
-	"Stepan Henek <stepan@bigdigdata.com>",
-]
-license = "MIT"
-classifiers = [
-	"Topic :: Software Development :: Libraries",
-	"License :: OSI Approved :: MIT License",
-	"Intended Audience :: Developers",
-	"Programming Language :: Python :: 3",
-	"Programming Language :: Python :: 3.12",
-]
-keywords = ["COUNTER", "SUSHI"]
-documentation = "https://github.com/Big-Dig-Data/celus-pycounter/blob/master/README.rst"
-
-[tool.poetry.scripts]
-sushiclient = 'celus_pycounter.sushiclient:main'
-
-[tool.poetry.dependencies]
-python = "^3.12"
-
-click = "~8.4.1"
-lxml = "~6.1.1"
-openpyxl = "~3.1.2"
-pendulum = "~3.2.0"
-requests = "~2.34.2"
-
-[tool.poetry.dev-dependencies]
-build = "~1.5.0"
-httmock = "~1.4.0"
-mock = "~5.2.0"
-mypy = "^2.1.0"
-pre-commit = "~4.6.0"
-pytest = "~9.0.3"
-pytest-cov = "~7.1.0"
-ruff = "~0.15.16"
