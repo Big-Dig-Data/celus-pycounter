@@ -1,5 +1,9 @@
 # Changelog
 
+## 5.0.2 (2026-06-09)
+
+* Migrate from poetry to uv
+
 ## 5.0.1 (2026-06-05)
 
 * Dependencies updated

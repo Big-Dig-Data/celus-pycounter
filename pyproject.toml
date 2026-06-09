@@ -1,6 +1,6 @@
 [project]
 name = "celus-pycounter"
-version = "5.0.1"
+version = "5.0.2"
 description = "Project COUNTER/NISO SUSHI statistics"
 authors = [
     { name = "Geoffrey Spear", email = "speargh@pitt.edu" },
